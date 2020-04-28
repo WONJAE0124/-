@@ -30,7 +30,7 @@
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
     
 <!--For Commons Validator Client Side-->
-    <script type="text/javascript" src="<c:url value='/cmmn/validator.do'/>"></script>
+   
     <validator:javascript formName="sampleVO" staticJavascript="false" xhtml="true" cdata="false"/>
     
     <script type="text/javaScript" language="javascript" defer="defer">
@@ -65,8 +65,8 @@
         
 
     </script>
-    
-    
+    <script type="text/javascript" src="<c:url value='/cmmn/validator.do'/>"></script>
+     <script type="text/javascript" src="<c:url value='/cmmn/validator.do'/>"></script>
 </head>
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
 
@@ -125,13 +125,16 @@
     			</td>
     		</tr>
     		<tr>
-    				<c:if test="${registerFlag == 'modify'}">
     			<td class="tbtd_caption"><label for="regUser"><spring:message code="title.sample.regUser" /></label></td>
     			<td class="tbtd_content">
-               			<form:input path="regUser" maxlength="10" cssClass="essentiality" readonly="true" />
+                    <c:if test="${registerFlag == 'modify'}">
+        				<form:input path="regUser" maxlength="10" cssClass="essentiality" readonly="true" />
         				&nbsp;<form:errors path="regUser" /></td>
                     </c:if>
-                    
+                    <c:if test="${registerFlag != 'modify'}">
+        				<form:input path="regUser" maxlength="10" cssClass="txt"  />
+        				&nbsp;<form:errors path="regUser" /></td>
+                    </c:if>
     		</tr>
     		
     	</table>
